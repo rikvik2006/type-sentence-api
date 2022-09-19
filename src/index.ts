@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import { config } from "dotenv";
 import router from "./router";
@@ -43,6 +43,11 @@ app.use(
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+    console.log(`${req.method}:${req.url}`)
+    next();
+})
 
 app.use("/api", router);
 
