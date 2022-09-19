@@ -6,6 +6,8 @@ import cookieParser from "cookie-parser";
 import mongoStore from "connect-mongo";
 import session from "express-session";
 import passport from "passport";
+import "./database";
+import "./strategies/local";
 config();
 
 const app = express();
